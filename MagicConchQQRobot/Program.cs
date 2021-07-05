@@ -69,10 +69,10 @@ namespace MagicConchQQRobot
                 List<GroupUser> groupUsers = new List<GroupUser>();
                 foreach (GroupMemberInfo userInfo in currentMemberList.Value.memberInfo)
                 {
-                    Regex rgx = new Regex(@"(?<=\u3010)\S+?(?=\u3011)");
+                    Regex rgx = new(@"(?<=\u3010)\S+?(?=\u3011)");
                     Match match = rgx.Match(userInfo.card);
 
-                    GroupUser user = new GroupUser()
+                    GroupUser user = new()
                     {
                         QQNumber = userInfo.user_id,
                         GroupNickname = userInfo.card,
