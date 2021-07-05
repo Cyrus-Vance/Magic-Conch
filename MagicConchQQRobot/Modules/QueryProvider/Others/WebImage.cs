@@ -30,7 +30,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
 
         public static async System.Threading.Tasks.Task IdentityForImageUrlAsync(long groupId, long sendtoId, string url, bool isPixivOnly)
         {
-            Random rnd = new Random();
+            Random rnd = new();
             //Get the sauce
             var sauce = await ClientList[rnd.Next(0, ClientList.Count)].GetSauceAsync(url);
 

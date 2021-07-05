@@ -988,14 +988,14 @@ namespace MagicConchQQRobot
                                         }
                                         else if (queryText.Contains("特朗普") || queryText.Contains("川普") || queryText.Contains("拜登"))
                                         {
-                                            UovzVPN.MachineStateReturn machineStateReturn = UovzVPN.GetMachineNetworkState();
+                                            GGY.MachineStateReturn machineStateReturn = GGY.GetMachineNetworkState();
                                             if (machineStateReturn != null)
                                             {
-                                                MessageHelper.SendGroupTextMessageWithAt(me.group_id, me.sender.user_id, $"当前身份可用，[拜登 - HK节点]可用上行流量当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
+                                                MessageHelper.SendGroupTextMessageWithAt(me.group_id, me.sender.user_id, $"当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
                                             }
                                             else
                                             {
-                                                MessageHelper.SendGroupTextMessageWithAt(me.group_id, me.sender.user_id, $"获取特朗普消息发生错误，请及时联系开发者！");
+                                                MessageHelper.SendGroupTextMessageWithAt(me.group_id, me.sender.user_id, $"获取拜登消息发生错误，请及时联系开发者！");
                                             }
                                         }
                                         else if (queryText.Contains("鱼饵余额"))

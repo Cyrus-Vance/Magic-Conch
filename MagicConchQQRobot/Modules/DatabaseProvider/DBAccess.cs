@@ -16,6 +16,7 @@ namespace MagicConchQQRobot
             {
                 DAL.AddConnStr(item.Key, item.GetSection("connectionString").Value, null, item.GetSection("providerName").Value);
             }
+            Console.WriteLine($"数据库连接字符串已读取完毕，共有{SecretData.GetChildren("ConnectionStrings").Count()}个数据库");
         }
     }
 }

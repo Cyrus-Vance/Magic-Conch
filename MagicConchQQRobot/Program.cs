@@ -36,7 +36,7 @@ namespace MagicConchQQRobot
 
             WebPExecuteDownloader.Download();
 
-            Task loginTask = new(() => UovzVPN.Login());
+            Task loginTask = new(() => GGY.Login());
             loginTask.Start();
 
             WebImage.InitSauceNaoClients();

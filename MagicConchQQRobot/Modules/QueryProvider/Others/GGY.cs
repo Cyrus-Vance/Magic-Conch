@@ -1,6 +1,6 @@
-﻿using MagicConchQQRobot.Modules.SecretProvider;
+﻿using HtmlAgilityPack;
+using MagicConchQQRobot.Modules.SecretProvider;
 using MagicConchQQRobot.Modules.Utils;
-using HtmlAgilityPack;
 using System;
 using System.IO;
 using System.Net;
@@ -8,11 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MagicConchQQRobot.Modules.QueryProvider.Others
 {
-    class UovzVPN
+    class GGY
     {
-        public const string UovzLoginUrl = "https://www.ggy.net/login";
-        public const string UovzUserPanelUrl = "https://www.ggy.net/clientarea.php";
-        public const string UovzNetworkStateUrl = "https://www.ggy.net/clientarea.php?action=productdetails&id=12067";
+        public const string GGYLoginUrl = "https://www.ggy.net/login";
+        public const string GGYUserPanelUrl = "https://www.ggy.net/clientarea.php";
+        public const string GGYNetworkStateUrl = "https://www.ggy.net/clientarea.php?action=productdetails&id=12067";
         public static CookieContainer cookieContainer = new();
 
         public class MachineStateReturn
@@ -22,36 +22,33 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
             public string RemainData { get; set; }
         }
 
-        public static bool Login(bool IsReconnectNeeded = false)
+        public static bool Login()
         {
 
             Console.WriteLine("正在登录[拜登 - HK节点]后台管理……");
-            if (!IsReconnectNeeded)
+            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"GGYIdentity.dat")))
             {
-                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"GGYIdentity.dat")))
+                try
                 {
-                    try
-                    {
-                        using Stream stream = File.Open(AppDomain.CurrentDomain.BaseDirectory + @"GGYIdentity.dat", FileMode.Open);
-                        Console.WriteLine("正在读取本地保存的[拜登 - HK节点]身份信息... ");
-                        BinaryFormatter formatter = new();
-                        cookieContainer = (CookieContainer)formatter.Deserialize(stream);
-                        stream.Close();
-                        Console.WriteLine("[拜登 - HK节点]身份信息读取完毕，正在检测身份可用性……");
+                    using Stream stream = File.Open(AppDomain.CurrentDomain.BaseDirectory + @"GGYIdentity.dat", FileMode.Open);
+                    Console.WriteLine("正在读取本地保存的[拜登 - HK节点]身份信息... ");
+                    BinaryFormatter formatter = new();
+                    cookieContainer = (CookieContainer)formatter.Deserialize(stream);
+                    stream.Close();
+                    Console.WriteLine("[拜登 - HK节点]身份信息读取完毕，正在检测身份可用性……");
 
-                        MachineStateReturn machineStateReturn = GetMachineNetworkState();
-                        Console.WriteLine($"当前身份可用，[拜登 - HK节点]可用上行流量当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
-                        return true;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("读取本地身份信息失败: " + e.ToString());
-                        Console.WriteLine("正在尝试重新登录……");
-                    }
+                    MachineStateReturn machineStateReturn = GetMachineNetworkState();
+                    Console.WriteLine($"当前身份可用，[拜登 - HK节点]当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("读取本地身份信息失败: " + e.ToString());
+                    Console.WriteLine("正在尝试重新登录……");
                 }
             }
 
-            string loginHtmlText = HttpHelper.HttpGet(UovzLoginUrl,cookieContainer: cookieContainer);
+            string loginHtmlText = HttpHelper.HttpGet(GGYLoginUrl, cookieContainer: cookieContainer);
 
             //读取csrftoken
             HtmlDocument loginDoc = new();
@@ -61,9 +58,9 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
 
             Console.WriteLine("Token获取完成，正在登录[拜登 - HK节点]中...");
 
-            HttpHelper.HttpPost(UovzLoginUrl, $"username={SecretData.GetSectionData("GGY:Username")}&password={SecretData.GetSectionData("GGY:Password")}&token={tokenString}", cookieContainer: cookieContainer);
+            HttpHelper.HttpPost(GGYLoginUrl, $"username={SecretData.GetSectionData("GGYVPN:Username")}&password={SecretData.GetSectionData("GGYVPN:Password")}&token={tokenString}", cookieContainer: cookieContainer);
 
-            string loginUserPanelText = HttpHelper.HttpGet(UovzUserPanelUrl, cookieContainer: cookieContainer);
+            string loginUserPanelText = HttpHelper.HttpGet(GGYUserPanelUrl, cookieContainer: cookieContainer);
 
             HtmlDocument afterLoginDoc = new();
             afterLoginDoc.LoadHtml(loginUserPanelText);
@@ -82,7 +79,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
                     Console.WriteLine("[拜登 - HK节点]登录信息保存完毕.");
 
                     MachineStateReturn machineStateReturn = GetMachineNetworkState();
-                    Console.WriteLine($"当前身份可用，[拜登 - HK节点]可用上行流量当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
+                    Console.WriteLine($"当前身份可用，[拜登 - HK节点]当前使用流量状况:{machineStateReturn.UsedData}/{machineStateReturn.TotalData}，剩余流量：{machineStateReturn.RemainData}");
                     return true;
                 }
                 catch (Exception ex)
@@ -99,7 +96,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
 
         public static MachineStateReturn GetMachineNetworkState()
         {
-            string userPanelText = HttpHelper.HttpGet(UovzNetworkStateUrl, cookieContainer: cookieContainer);
+            string userPanelText = HttpHelper.HttpGet(GGYNetworkStateUrl, cookieContainer: cookieContainer);
 
             HtmlDocument panelDoc = new();
             panelDoc.LoadHtml(userPanelText);
@@ -107,7 +104,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
             var targetNode = panelDoc.DocumentNode.SelectNodes("//div[@class='col-md-4']")[0].SelectSingleNode("./div/div");
 
             var usedData = targetNode.SelectSingleNode("./span").InnerText;
-            var deletedUsedDataNode =targetNode;
+            var deletedUsedDataNode = targetNode;
 
             deletedUsedDataNode.SelectSingleNode("./span").Remove();
 
@@ -117,7 +114,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
             {
                 UsedData = usedData,
                 TotalData = totalData,
-                RemainData = (totalData.Replace("GB","").ToDouble()- usedData.Replace("GB", "").ToDouble()).ToString()+"GB"
+                RemainData = (totalData.Replace("GB", "").ToDouble() - usedData.Replace("GB", "").ToDouble()).ToString() + "GB"
             };
             return machineStateReturn;
         }
