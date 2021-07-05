@@ -21,7 +21,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
         public static readonly string XianbeiImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "image", "xianbei");
         public static readonly string DragonImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "image", "lyt");
 
-        private static readonly List<string> AllowImageExt = new List<string> { ".jpg", ".jpeg", ".gif", ".png" };
+        private static readonly List<string> AllowImageExt = new() { ".jpg", ".jpeg", ".gif", ".png" };
 
         private const string ExistedImage = "这张图已经有了，请换一张~";
 
@@ -47,11 +47,11 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
         public static void CheckAllImageDirectory(long groupId)
         {
             string sendText = "";
-            DirectoryInfo xianbeiDir = new DirectoryInfo(XianbeiImagePath);
+            DirectoryInfo xianbeiDir = new(XianbeiImagePath);
             FileInfo[] xianbeiFileInfos = xianbeiDir.GetFiles();
             sendText += $"{ImageTypeTextDictionary[ImageType.Xianbei]}图库中共有{xianbeiFileInfos.Length}个图片，{ImagehashXianbei.FindCount()}个数据库项.";
 
-            DirectoryInfo lytDir = new DirectoryInfo(DragonImagePath);
+            DirectoryInfo lytDir = new(DragonImagePath);
             FileInfo[] lytFileInfos = lytDir.GetFiles();
             sendText += $"\n{ImageTypeTextDictionary[ImageType.Lyt]}图库中共有{lytFileInfos.Length}个图片，{ImagehashLyt.FindCount()}个数据库项.";
 
@@ -182,7 +182,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
 
         private static void SendBanRequest(long groupId, long rapingUserQQ, string rapingUserName, int rapeLevel)
         {
-            List<Element> elements = new List<Element>();
+            List<Element> elements = new();
             byte[] imgBytes = TryFindPhoto(ImageType.Xianbei);
             if (imgBytes != null)
             {
@@ -240,7 +240,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
             if (fileInfos.Length == 0) return null;
             while (true)
             {
-                Random rnd = new Random();
+                Random rnd = new();
                 int rndIndex = rnd.Next(fileInfos.Length);
 
                 Console.WriteLine($"正在发送随机图片，图库：{(int)type},文件路径：{fileInfos[rndIndex].FullName}");
@@ -340,7 +340,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
                     }
             }
 
-            DirectoryInfo directory = new DirectoryInfo(downloadRootPath);
+            DirectoryInfo directory = new(downloadRootPath);
             FileInfo[] fileInfos = directory.GetFiles();
 
             MessageHelper.SendGroupTextMessage(groupId, $"学习成功！{ImageTypeTextDictionary[type]}图库已有{fileInfos.Length}张图片，欢迎持续施工~");
