@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RobotFileServer</name>
+    </assembly>
+    <members>
+        <member name="T:RobotFileServer.Controllers.FileController">
+            <summary>
+            文件控制器
+            </summary>
+        </member>
+        <member name="M:RobotFileServer.Controllers.FileController.UploadImageByUrl(System.String)">
+            <summary>
+            通过URL获取图片
+            </summary>
+            <param name="fileUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RobotFileServer.Controllers.FileController.UploadImageFileAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传图片文件
+            </summary>
+            <param name="uploadFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RobotFileServer.Modules.Utils.HttpHelper.HttpPost(System.String,System.String)">
+            <summary>
+            POST方法
+            </summary>
+            <param name="Url">要访问的地址</param>
+            <param name="postDataStr">PostBody的内容，例如a=1&amp;b=2</param>
+            <returns></returns>
+        </member>
+        <member name="M:RobotFileServer.Modules.Utils.TimestampHelper.GetTimestampSecond">
+            <summary>
+            获取秒级时间戳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RobotFileServer.Modules.Utils.TimestampHelper.GetTimeStampMilliSecond">
+            <summary>
+            获取毫秒级时间戳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RobotFileServer.Program">
+            
+        </member>
+        <member name="M:RobotFileServer.Program.Main(System.String[])">
+            
+        </member>
+        <member name="M:RobotFileServer.Program.CreateHostBuilder(System.String[])">
+            
+        </member>
+        <member name="T:RobotFileServer.Startup">
+            
+        </member>
+        <member name="M:RobotFileServer.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            
+        </member>
+        <member name="P:RobotFileServer.Startup.Configuration">
+            
+        </member>
+        <member name="M:RobotFileServer.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            
+        </member>
+        <member name="M:RobotFileServer.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        </member>
+    </members>
+</doc>

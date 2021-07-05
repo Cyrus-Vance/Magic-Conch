@@ -1,0 +1,16 @@
+using CyrusVance.CoolQRobot.Enums;
+namespace CyrusVance.CoolQRobot.Events.CQEvents.Base {
+    /// <summary></summary>
+    public abstract class NoticeEvent : CQEvent {
+        /// <summary></summary>
+        public NoticeType noticeType { get; private set; }
+        /// <summary></summary>
+        public long user_id { get; private set; }
+        /// <summary></summary>
+        public NoticeEvent (long time, NoticeType noticeType, long user_id):
+            base (time, PostType.notice) {
+                this.noticeType = noticeType;
+                this.user_id = user_id;
+            }
+    }
+}

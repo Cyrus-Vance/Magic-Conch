@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>ta1H3n</Authors>
+    <Company />
+    <Description>Simple asynchronous wrapper for the SauceNAO API.</Description>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageTags>saucenao image search anime engine source</PackageTags>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ta1H3n/SauceNET</PackageProjectUrl>
+    <Version>1.1.1</Version>
+    <PackageReleaseNotes>Read latest commit message for updates.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

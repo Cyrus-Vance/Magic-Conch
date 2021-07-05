@@ -1,0 +1,36 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="netstandard" #>
+<#@ assembly name="D:\Project\MagicConch\MagicConchQQRobot\bin\Debug\netcoreapp3.1\NewLife.Core.dll" #>
+<#@ assembly name="D:\Project\MagicConch\MagicConchQQRobot\bin\Debug\netcoreapp3.1\XCode.dll" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="XCode.Code" #>
+<#@ output extension=".log" #>
+<#    
+	string modelPath = @"D:\Project\MagicConch\MagicConchQQRobot\DbModel";
+	string dbObjPath = @"D:\Project\MagicConch\MagicConchQQRobot\DataObjs\DbClass";
+    
+	DirectoryInfo dir = new DirectoryInfo(dbObjPath);
+    FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //返回目录中所有文件和子目录
+    foreach (FileSystemInfo i in fileinfo)
+    {
+        if (i is DirectoryInfo)            //判断是否文件夹
+        {
+            DirectoryInfo subdir = new DirectoryInfo(i.FullName);
+            subdir.Delete(true);          //删除子目录和文件
+        } 
+        else
+        {
+            File.Delete(i.FullName);      //删除指定文件
+        }
+    }            
+    
+    // 设置当前工作目录
+	PathHelper.BasePath = Host.ResolvePath(".");
+	// 导入模型文件并生成实体类，模型文件、输出目录、命名空间、连接名、中文文件名、表名字段名大小写
+	//EntityBuilder.Build(String xmlFile = null, String output = null, String nameSpace = null, String connName = null, Boolean? chineseFileName = true,Boolean? nameIgnoreCase = null);
+	EntityBuilder.Build(modelPath+@"\cvqrobot.xml",dbObjPath,"MagicConchQQRobot.DataObjs.DbClass","CvqRobotDB");
+	EntityBuilder.Build(modelPath+@"\supernoob.xml",dbObjPath,"MagicConchQQRobot.DataObjs.DbClass","SuperNoobDB");
+	//var tables = DAL.ImportFrom("Company.Project.xml");
+	//EntityBuilder.Build(tables);
+#>

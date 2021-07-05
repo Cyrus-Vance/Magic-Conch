@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tables xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://www.newlifex.com http://www.newlifex.com/Model2020.xsd" Output="D:\Project\MagicConch\MagicConchQQRobot\DataObjs\DbClass" NameSpace="MagicConchQQRobot.DataObjs.DbClass" ConnName="CvqRobotDB" BaseClass="Entity" xmlns="http://www.newlifex.com/Model2020.xsd">
+  <Table Name="FfxivGameserver" TableName="FFXIV_GameServer" IgnoreNameCase="False">
+    <Columns>
+      <Column Name="id" DataType="Int32" RawType="int(11) unsigned" Identity="True" PrimaryKey="True" />
+      <Column Name="ServerName" ColumnName="server_name" DataType="String" RawType="varchar(255)" Length="255" />
+      <Column Name="AreaID" ColumnName="area_id" DataType="Int32" RawType="int(11)" Nullable="True" />
+      <Column Name="GroupID" ColumnName="group_id" DataType="Int32" RawType="int(11)" Nullable="True" />
+    </Columns>
+  </Table>
+  <Table Name="ImagehashLyt" TableName="ImageHash_LYT" IgnoreNameCase="False">
+    <Columns>
+      <Column Name="Hash" DataType="String" RawType="varchar(255)" PrimaryKey="True" Length="255" Nullable="False" Description="哈希值" />
+      <Column Name="Filename" DataType="String" RawType="varchar(255)" Length="255" Nullable="False" Description="文件名" />
+      <Column Name="HashType" ColumnName="hash_type" DataType="Int32" RawType="int(11)" Description="哈希类型（1：SHA-1）" />
+      <Column Name="UploadTime" ColumnName="upload_time" DataType="Int64" RawType="bigint(20) unsigned" Description="上传时间" />
+      <Column Name="Uid" DataType="Int64" RawType="bigint(20)" Description="上传者的QQ" />
+    </Columns>
+    <Indexes>
+      <Index Name="PRIMARY" Columns="hash" Unique="True" PrimaryKey="True" />
+    </Indexes>
+  </Table>
+  <Table Name="ImagehashXianbei" TableName="ImageHash_Xianbei" IgnoreNameCase="False">
+    <Columns>
+      <Column Name="Hash" DataType="String" RawType="varchar(255)" PrimaryKey="True" Length="255" Nullable="False" Description="哈希值" />
+      <Column Name="Filename" DataType="String" RawType="varchar(255)" Length="255" Nullable="False" Description="文件名" />
+      <Column Name="HashType" ColumnName="hash_type" DataType="Int32" RawType="int(11)" Description="哈希类型（1：SHA-1）" />
+      <Column Name="UploadTime" ColumnName="upload_time" DataType="Int64" RawType="bigint(20) unsigned" Description="上传时间" />
+      <Column Name="Uid" DataType="Int64" RawType="bigint(20)" Description="上传者的QQ" />
+    </Columns>
+    <Indexes>
+      <Index Name="PRIMARY" Columns="hash" Unique="True" PrimaryKey="True" />
+    </Indexes>
+  </Table>
+  <Table Name="User" IgnoreNameCase="False">
+    <Columns>
+      <Column Name="Uid" DataType="Int64" RawType="bigint(255) unsigned" PrimaryKey="True" Description="用户QQ号" />
+      <Column Name="Level" DataType="Int32" RawType="int(11) unsigned" Description="用户等级" />
+      <Column Name="Nickname" DataType="String" RawType="varchar(255)" Length="255" Nullable="False" Description="SuperNoob队员的代号" />
+      <Column Name="Banned" DataType="Int32" RawType="int(11) unsigned" Description="用户是否被封禁" />
+      <Column Name="OffenceCount" ColumnName="offence_count" DataType="Int32" RawType="int(11)" Description="用户骚扰次数" />
+      <Column Name="Regtime" DataType="Int64" RawType="bigint(20) unsigned" Description="注册时的时间戳" />
+      <Column Name="ImageIdCount" DataType="Int32" RawType="int(11) unsigned" Description="每日图像识别的次数" />
+      <Column Name="LastImageIdTime" DataType="Int64" RawType="bigint(255) unsigned" Description="最后一次图像识别的日期" />
+    </Columns>
+    <Indexes>
+      <Index Name="PRIMARY" Columns="uid" Unique="True" PrimaryKey="True" />
+    </Indexes>
+  </Table>
+  <Table Name="UserAdmin" TableName="User_Admin" IgnoreNameCase="False">
+    <Columns>
+      <Column Name="Uid" DataType="Int32" RawType="int(10) unsigned" PrimaryKey="True" Description="管理员QQ" />
+      <Column Name="AdminLevel" ColumnName="admin_level" DataType="Int32" RawType="int(10) unsigned" Description="管理员等级" />
+    </Columns>
+    <Indexes>
+      <Index Name="PRIMARY" Columns="uid" Unique="True" PrimaryKey="True" />
+    </Indexes>
+  </Table>
+</Tables>

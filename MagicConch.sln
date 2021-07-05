@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicConchQQRobot", "MagicConchQQRobot\MagicConchQQRobot.csproj", "{252FA6AD-AF17-4061-9993-5A007F9A63E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyrusVance.CoolQRobot", "CyrusVance.CoolQRobot\CyrusVance.CoolQRobot.csproj", "{F69E190C-DC12-4108-906C-6CFA00F35AA9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SauceNET", "SauceNET\SauceNET.csproj", "{2D091A59-D858-4507-9A9A-2519B8790E53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPWrapper", "WebPWrapper\WebPWrapper.csproj", "{840EC8EE-F9EC-422A-9A14-FD69D517D954}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotFileServer", "RobotFileServer\RobotFileServer.csproj", "{CA4E03CF-57D7-4214-A424-A826DE172E25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{45B13B50-7352-4E9C-9857-E37601897B9F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{252FA6AD-AF17-4061-9993-5A007F9A63E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252FA6AD-AF17-4061-9993-5A007F9A63E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252FA6AD-AF17-4061-9993-5A007F9A63E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252FA6AD-AF17-4061-9993-5A007F9A63E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69E190C-DC12-4108-906C-6CFA00F35AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69E190C-DC12-4108-906C-6CFA00F35AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69E190C-DC12-4108-906C-6CFA00F35AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69E190C-DC12-4108-906C-6CFA00F35AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D091A59-D858-4507-9A9A-2519B8790E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D091A59-D858-4507-9A9A-2519B8790E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D091A59-D858-4507-9A9A-2519B8790E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D091A59-D858-4507-9A9A-2519B8790E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840EC8EE-F9EC-422A-9A14-FD69D517D954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840EC8EE-F9EC-422A-9A14-FD69D517D954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840EC8EE-F9EC-422A-9A14-FD69D517D954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840EC8EE-F9EC-422A-9A14-FD69D517D954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4E03CF-57D7-4214-A424-A826DE172E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4E03CF-57D7-4214-A424-A826DE172E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4E03CF-57D7-4214-A424-A826DE172E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4E03CF-57D7-4214-A424-A826DE172E25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7DCFBAD-CA5E-4EE1-9FBA-499ACDDBA9FA}
+	EndGlobalSection
+EndGlobal
