@@ -20,7 +20,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.FFXIV
             {
                 FfxivGameserver gameserver = gameserverList[0];
                 LogHelper.Debug(groupId,$"开始查询{playerName}的国服零式数据，输入服务器名为{serverName}，查询出AreaId为{gameserver.AreaID}，GroupId为{gameserver.GroupID}");
-                string returnJson = HttpHelper.HttpPost(@"http://act.ff.sdo.com/20180525HeroList/Server/HeroList190128.ashx", @$"method=queryhreodata&Stage=2&Name={playerName}&AreaId={gameserver.AreaID}&GroupId={gameserver.GroupID}");
+                string returnJson = HttpHelper.HttpPost(@"https://actff1.web.sdo.com/20180525HeroList/Server/HeroList190128.ashx", @$"method=queryhreodata&Stage=2&Name={playerName}&AreaId={gameserver.AreaID}&GroupId={gameserver.GroupID}");
                 return returnJson;
             }
             else
