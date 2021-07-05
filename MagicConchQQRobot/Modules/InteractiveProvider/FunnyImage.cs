@@ -66,7 +66,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
             {
                 case ImageType.Xianbei:
                     {
-                        DirectoryInfo directory = new DirectoryInfo(XianbeiImagePath);
+                        DirectoryInfo directory = new(XianbeiImagePath);
                         FileInfo[] fileInfos = directory.GetFiles();
                         foreach (var item in fileInfos)
                         {
@@ -84,7 +84,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
                     }
                 case ImageType.Lyt:
                     {
-                        DirectoryInfo directory = new DirectoryInfo(DragonImagePath);
+                        DirectoryInfo directory = new(DragonImagePath);
                         FileInfo[] fileInfos = directory.GetFiles();
                         foreach (var item in fileInfos)
                         {
@@ -234,7 +234,7 @@ namespace MagicConchQQRobot.Modules.InteractiveProvider
                     }
             }
 
-            DirectoryInfo directory = new DirectoryInfo(findingPath);
+            DirectoryInfo directory = new(findingPath);
             FileInfo[] fileInfos = directory.GetFiles();
 
             if (fileInfos.Length == 0) return null;

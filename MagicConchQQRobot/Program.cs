@@ -89,7 +89,7 @@ namespace MagicConchQQRobot
                 //Console.WriteLine(currentMemberList.Value.raw_data);
                 Console.WriteLine($"群{currentMemberList.Key}共有{GlobalObj.GroupRobotUserLists[currentMemberList.Key].Count}个群内用户");
 
-                StringBuilder informText = new StringBuilder("队内成员：\n==========================");
+                StringBuilder informText = new("队内成员：\n==========================");
                 foreach (var aa in GlobalObj.GroupRobotUserLists[currentMemberList.Key])
                 {
                     informText.Append($"\n队员代号：{(string.IsNullOrEmpty(aa.SuperNoobID) ? "弱子" : aa.SuperNoobID)},身份：{ aa.QQNumber}");
