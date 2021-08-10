@@ -103,7 +103,7 @@ namespace MagicConchQQRobot.Modules.QueryProvider.Others
 
             var targetNode = panelDoc.DocumentNode.SelectNodes("//div[@class='col-md-4']")[0].SelectSingleNode("./div/div");
 
-            var usedData = targetNode.SelectSingleNode("./span").InnerText;
+            var usedData = targetNode.SelectSingleNode("./span").InnerText.Trim();
             var deletedUsedDataNode = targetNode;
 
             deletedUsedDataNode.SelectSingleNode("./span").Remove();
